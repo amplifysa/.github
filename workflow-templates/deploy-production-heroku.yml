@@ -1,0 +1,42 @@
+name: Deploy a production release to heroku
+on:
+  workflow_dispatch:
+    inputs:
+      release_version:
+        description: Version to deploy to production
+        required: true
+
+jobs:
+  deploy_production:
+    name: Deploy to production
+    runs-on: ubuntu-latest
+    env:
+      HEROKU_APP: amplify-[name]
+
+    steps:
+      - name: Docker login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Docker login to Heroku
+        uses: docker/login-action@v1
+        with:
+          registry: registry.heroku.com
+          username: _
+          password: ${{ secrets.HEROKU_API_KEY }}
+
+      - name: Docker pull released image
+        run: "docker pull ghcr.io/${{ github.repository }}:${{ github.event.inputs.release_version }}"
+
+      - name: Docker tag released image for Heroku
+        run: "docker tag ghcr.io/${{ github.repository }}:${{ github.event.inputs.release_version }}
+        registry.heroku.com/${{ env.HEROKU_APP }}/web"
+
+      - name: Docker push released image to Heroku
+        run: "docker push registry.heroku.com/${{ env.HEROKU_APP }}/web"
+
+      - name: Deploy to Heroku production
+        run: HEROKU_API_KEY=${{ secrets.HEROKU_API_KEY }} heroku container:release web --app ${{ env.HEROKU_APP }}

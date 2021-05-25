@@ -1,10 +1,12 @@
-name: Test pipenv/pytest/flake8 project
+name: Test project
 on: [ push, pull_request ]
 
 jobs:
   test:
     name: Lint and test
     runs-on: ubuntu-latest
+    env:
+      PYTHON_VERSION: "3.9.2"
 
     steps:
       - name: Checkout code
@@ -13,7 +15,7 @@ jobs:
       - name: Setup python
         uses: actions/setup-python@v2
         with:
-          python-version: "3.9.2"
+          python-version: ${{ env.PYTHON_VERSION }}
 
       - name: Install python dependencies with pipenv
         run: |

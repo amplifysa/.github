@@ -1,0 +1,11 @@
+{
+  "name": "deploy-production-heroku.yml",
+  "description": "Deploy a production release to heroku",
+  "iconName": "amplify",
+  "categories": [
+    "Docker"
+  ],
+  "filePatterns": [
+    "^Dockerfile"
+  ]
+}

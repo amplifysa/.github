@@ -1,0 +1,11 @@
+{
+  "name": "main-docker-heroku.yml",
+  "description": "Build and deploy a new staging release to heroku",
+  "iconName": "amplify",
+  "categories": [
+    "Docker"
+  ],
+  "filePatterns": [
+    "^Dockerfile"
+  ]
+}

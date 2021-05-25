@@ -1,0 +1,54 @@
+name: Build and deploy develop branch to heroku
+on:
+  push:
+    branches: [ develop ]
+
+jobs:
+  deploy_development:
+    name: Build and deploy
+    runs-on: ubuntu-latest
+    env:
+      HEROKU_APP: amplify-[name]-development
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # Fetch all tags
+
+      - name: Get development version
+        run: |
+          git_describe=$(git describe --abbrev=4 --always --match="v*")
+          echo "RELEASE_VERSION=${git_describe#v*}" >> $GITHUB_ENV
+
+      - name: Docker login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Docker login to Heroku
+        uses: docker/login-action@v1
+        with:
+          registry: registry.heroku.com
+          username: _
+          password: ${{ secrets.HEROKU_API_KEY }}
+
+      - name: Add version.txt into the code
+        run: echo $RELEASE_VERSION > version.txt
+
+      - name: Build and push image
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository }}:latest
+            registry.heroku.com/${{ env.HEROKU_APP }}/web
+
+      - name: Install Heroku cli
+        run: curl https://cli-assets.heroku.com/install.sh | sudo sh
+
+      - name: Deploy to Heroku staging
+        run: HEROKU_API_KEY=${{ secrets.HEROKU_API_KEY }} heroku container:release web --app ${{ env.HEROKU_APP }}

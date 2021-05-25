@@ -1,0 +1,11 @@
+{
+  "name": "develop-docker-heroku.yml",
+  "description": "Build and deploy develop branch to heroku",
+  "iconName": "amplify",
+  "categories": [
+    "Docker"
+  ],
+  "filePatterns": [
+    "^Dockerfile"
+  ]
+}
