@@ -1,0 +1,12 @@
+{
+  "name": "test-python.yml",
+  "description": "Test pytest/flake8 project",
+  "iconName": "amplify",
+  "categories": [
+    "Python"
+  ],
+  "filePatterns": [
+    "^Pipfile",
+    "^Pipfile.lock"
+  ]
+}

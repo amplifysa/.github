@@ -1,0 +1,27 @@
+name: Test pipenv/pytest/flake8 project
+on: [ push, pull_request ]
+
+jobs:
+  test:
+    name: Lint and test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.9.2"
+
+      - name: Install python dependencies with pipenv
+        run: |
+          pip install pipenv
+          pipenv install --deploy --dev
+
+      - name: Run python linter
+        run: pipenv run flake8 .
+
+      - name: Run python tests
+        run: pipenv run pytest
