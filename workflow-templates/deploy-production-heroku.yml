@@ -1,4 +1,4 @@
-name: Deploy a production release to heroku
+name: Deploy a production release to Heroku
 on:
   workflow_dispatch:
     inputs:

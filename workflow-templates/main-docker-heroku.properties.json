@@ -1,6 +1,6 @@
 {
-  "name": "main-docker-heroku.yml",
-  "description": "Build and deploy a new staging release to heroku",
+  "name": "Build and deploy a new staging release to Heroku",
+  "description": "Build a new semver Docker Image from main branch, create a annotated tag and deploy to Heroku staging environment",
   "iconName": "amplify",
   "categories": [
     "Docker"

@@ -1,6 +1,6 @@
 {
-  "name": "deploy-production-heroku.yml",
-  "description": "Deploy a production release to heroku",
+  "name": "Deploy a production release to Heroku",
+  "description": "Choose a tagged Docker image and deploy to Heroku production environment",
   "iconName": "amplify",
   "categories": [
     "Docker"

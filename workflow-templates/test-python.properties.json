@@ -1,6 +1,6 @@
 {
-  "name": "test-python.yml",
-  "description": "Test project",
+  "name": "Test project",
+  "description": "Test a Python/pipenv/pytest/flake8 project",
   "iconName": "amplify",
   "categories": [
     "Python"

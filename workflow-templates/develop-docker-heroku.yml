@@ -1,4 +1,4 @@
-name: Build and deploy develop branch to heroku
+name: Build and deploy develop branch to Heroku
 on:
   push:
     branches: [ develop ]

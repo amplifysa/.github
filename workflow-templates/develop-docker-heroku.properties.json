@@ -1,6 +1,6 @@
 {
-  "name": "develop-docker-heroku.yml",
-  "description": "Build and deploy develop branch to heroku",
+  "name": "Build and deploy develop branch to Heroku",
+  "description": "Build an Docker image from develop branch and deploy to Heroku development environment",
   "iconName": "amplify",
   "categories": [
     "Docker"

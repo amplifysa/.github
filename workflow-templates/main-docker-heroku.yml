@@ -1,4 +1,4 @@
-name: Build and deploy a new staging release to heroku
+name: Build and deploy a new staging release to Heroku
 on:
   workflow_dispatch:
     inputs:
