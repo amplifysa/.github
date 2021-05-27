@@ -7,11 +7,11 @@ on:
         required: true
 
 jobs:
-  deploy_production:
-    name: Deploy to production
+  deploy:
+    name: Deploy
     runs-on: ubuntu-latest
     env:
-      HEROKU_APP: amplify-[name]
+      HEROKU_APP: amplify-<<CHANGE ME>>
 
     steps:
       - name: Docker login to GitHub Container Registry

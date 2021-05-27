@@ -4,11 +4,11 @@ on:
     branches: [ develop ]
 
 jobs:
-  deploy_development:
+  build_deploy:
     name: Build and deploy
     runs-on: ubuntu-latest
     env:
-      HEROKU_APP: amplify-[name]-development
+      HEROKU_APP: amplify-<<CHANGE ME>>-development
 
     steps:
       - name: Check out the repository

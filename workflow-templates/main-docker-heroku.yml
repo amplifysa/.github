@@ -8,11 +8,11 @@ on:
         default: minor
 
 jobs:
-  make_release:
-    name: Create and build a new release
+  build_deploy:
+    name: Build and deploy
     runs-on: ubuntu-latest
     env:
-      HEROKU_APP: amplify-[name]-staging
+      HEROKU_APP: amplify-<<CHANGE ME>>-staging
 
     steps:
       - name: Bump version and push tag
@@ -24,8 +24,10 @@ jobs:
           create_annotated_tag: true
           default_bump: ${{ github.event.inputs.default_bump }}
 
-      - name: Check out the repository
+      - name: Check out main repository
         uses: actions/checkout@v2
+        with:
+          ref: main
 
       - name: Add version.txt into the code
         run: echo ${{ steps.version.outputs.new_version }} > version.txt
