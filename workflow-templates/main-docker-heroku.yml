@@ -15,6 +15,10 @@ jobs:
       HEROKU_APP: amplify-<<CHANGE ME>>-staging
 
     steps:
+      - name: Check branch is main
+        if: github.ref !== 'refs/heads/main'
+        run: echo 'Please run this workflow on main branch; exit 1
+
       - name: Bump version and push tag
         id: version
         uses: mathieudutour/github-tag-action@v5.5
@@ -24,10 +28,8 @@ jobs:
           create_annotated_tag: true
           default_bump: ${{ github.event.inputs.default_bump }}
 
-      - name: Check out main repository
+      - name: Check out repository
         uses: actions/checkout@v2
-        with:
-          ref: main
 
       - name: Add version.txt into the code
         run: echo ${{ steps.version.outputs.new_version }} > version.txt
