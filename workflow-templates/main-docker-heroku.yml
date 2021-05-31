@@ -16,8 +16,8 @@ jobs:
 
     steps:
       - name: Check branch is main
-        if: github.ref !== 'refs/heads/main'
-        run: echo 'Please run this workflow on main branch; exit 1
+        if: github.ref != 'refs/heads/main'
+        run: echo 'Please run this workflow on main branch'; exit 1
 
       - name: Bump version and push tag
         id: version
