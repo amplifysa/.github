@@ -7,7 +7,7 @@ on:
         required: true
 
 jobs:
-  deploy:
+  deploy-production-heroku:
     name: Deploy
     runs-on: ubuntu-latest
     env:

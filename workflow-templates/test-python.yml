@@ -2,7 +2,7 @@ name: Test project
 on: [ push, pull_request ]
 
 jobs:
-  test:
+  test-python:
     name: Lint and test
     runs-on: ubuntu-latest
     env:
