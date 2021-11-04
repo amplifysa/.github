@@ -1,5 +1,5 @@
 {
-  "name": "Deploy a production release to Heroku",
+  "name": "Deploy a Docker production release to Heroku",
   "description": "Choose a tagged Docker image and deploy to Heroku production environment",
   "iconName": "amplify",
   "categories": [

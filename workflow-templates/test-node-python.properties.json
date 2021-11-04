@@ -1,0 +1,14 @@
+{
+  "name": "Test project",
+  "description": "Test a Node/npm and Python/pipenv/pytest/flake8 project",
+  "iconName": "amplify",
+  "categories": [
+    "Python"
+  ],
+  "filePatterns": [
+    "^package.json",
+    "^package-lock.json",
+    "^Pipfile",
+    "^Pipfile.lock"
+  ]
+}
