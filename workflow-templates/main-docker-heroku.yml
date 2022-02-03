@@ -69,6 +69,7 @@ jobs:
           push: true
           tags: |
             ghcr.io/${{ github.repository }}:${{ steps.version.outputs.new_version }}
+            ghcr.io/${{ github.repository }}:latest
             registry.heroku.com/${{ env.HEROKU_APP }}/web
 
       - name: Install Heroku cli
