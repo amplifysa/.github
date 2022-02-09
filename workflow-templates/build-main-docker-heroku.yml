@@ -8,9 +8,10 @@ on:
         default: minor
 
 jobs:
-  main-docker-heroku:
+  build-main-docker-heroku:
     name: Build and deploy
-    runs-on: ubuntu-latest
+    environment: staging
+    runs-on: ubuntu-20.04
     env:
       HEROKU_APP: amplify-<<CHANGE ME>>-staging
 

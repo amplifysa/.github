@@ -1,0 +1,11 @@
+{
+  "name": "Build and deploy a new staging release to a Kubernetes cluster with kubectl",
+  "description": "Build a new semver Docker Image from main branch, create an annotated tag and update the image in the Kubernetes cluster",
+  "iconName": "amplify",
+  "categories": [
+    "Docker"
+  ],
+  "filePatterns": [
+    "^Dockerfile"
+  ]
+}
