@@ -1,6 +1,6 @@
 {
   "name": "Build and deploy a new staging release to Heroku",
-  "description": "Build a new semver Docker Image from main branch, create a annotated tag and deploy to Heroku staging environment",
+  "description": "Build a new semver Docker Image from main branch, create an annotated tag and deploy to Heroku staging environment",
   "iconName": "amplify",
   "categories": [
     "Docker"
